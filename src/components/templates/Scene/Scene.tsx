@@ -3,14 +3,15 @@ import { Wall } from '@atoms/Wall';
 import { Button3D } from '@atoms/Button3D';
 import { useRef } from 'react';
 import { SpotLight } from 'three';
+import { Input3D } from '@root/components/atoms/Input3D/Input3D';
 
 export const Scene: React.FC = () => {
 	const lightRef = useRef<SpotLight>(null);
 
 	useFrame(({ pointer }) => {
 		if (lightRef.current) {
-			lightRef.current.position.set(pointer.x * 10, pointer.y * 10, 5);
-			lightRef.current.lookAt(pointer.x * 10, pointer.y * 10, 0);
+			lightRef.current.position.set(pointer.x * 4, pointer.y * 4, 10);
+			lightRef.current.lookAt(pointer.x * 4, pointer.y * 4, 0);
 		}
 	});
 
@@ -21,12 +22,13 @@ export const Scene: React.FC = () => {
 				ref={lightRef}
 				penumbra={0.5}
 				color="#ffffff"
-				intensity={10}
+				intensity={105}
 				shadow-mapSize-width={2048}
 				shadow-mapSize-height={2048}
 				castShadow
 			/>
 			<Wall />
+			<Input3D position={[-1, 1, 0.5]} />
 			<Button3D
 				label="Submit"
 				onClick={() => alert('Button Clicked!')}
