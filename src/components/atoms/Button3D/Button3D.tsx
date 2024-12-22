@@ -1,5 +1,5 @@
 import { RoundedBox, Text } from '@react-three/drei';
-import React from 'react';
+import React, { useState } from 'react';
 import { ButtonProps } from './Button3D.types';
 
 export const Button3D: React.FC<ButtonProps> = ({
@@ -11,7 +11,10 @@ export const Button3D: React.FC<ButtonProps> = ({
 	depth = 0.5,
 	color = 'black',
 	bgColor = '#bcbcbc',
+	hoverColor = 'orange',
 }) => {
+	const [hovered, setHovered] = useState(false);
+
 	return (
 		<RoundedBox
 			args={[width, height, depth]}
@@ -19,8 +22,10 @@ export const Button3D: React.FC<ButtonProps> = ({
 			castShadow
 			receiveShadow
 			onClick={onClick}
+			onPointerOver={() => setHovered(true)}
+			onPointerOut={() => setHovered(false)}
 		>
-			<meshStandardMaterial color={bgColor} />
+			<meshStandardMaterial color={hovered ? hoverColor : bgColor} />
 			<Text
 				position={[0, 0, 0.26]}
 				fontSize={0.2}

@@ -7,4 +7,5 @@ export interface ButtonProps {
 	depth?: number;
 	color?: string;
 	bgColor?: string;
+	hoverColor?: string;
 }
