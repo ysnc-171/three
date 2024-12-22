@@ -1,5 +1,5 @@
 import { RoundedBox, Text } from '@react-three/drei';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ButtonProps } from './Button3D.types';
 
 export const Button3D: React.FC<ButtonProps> = ({
@@ -14,6 +14,10 @@ export const Button3D: React.FC<ButtonProps> = ({
 	hoverColor = 'orange',
 }) => {
 	const [hovered, setHovered] = useState(false);
+
+	useEffect(() => {
+		document.body.style.cursor = hovered ? 'pointer' : 'auto';
+	}, [hovered]);
 
 	return (
 		<RoundedBox
