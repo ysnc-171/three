@@ -1,10 +1,3 @@
-import { Canvas } from '@react-three/fiber';
-import { Button3D } from './components/atoms/Button/Button';
+import { Scene } from '@templates/Scene';
 
-export const App: React.FunctionComponent = () => {
-	return (
-		<Canvas>
-			<Button3D onClick={() => alert('Button clicked!')} label="Click Me" />
-		</Canvas>
-	);
-};
+export const App: React.FunctionComponent = () => <Scene />;
